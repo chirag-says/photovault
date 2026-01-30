@@ -1,36 +1,122 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# PhotoVault - Private Photo Sharing Platform
 
-## Getting Started
+A premium, secure photo sharing platform built with Next.js 14, Supabase, and TypeScript.
 
-First, run the development server:
+## 🚀 Features
+
+- **Secure Authentication** - JWT-based auth with invite-only signup
+- **Private Photo Storage** - All photos stored securely in Supabase
+- **Image Processing** - Automatic thumbnail generation with Sharp
+- **Albums** - Create public or private albums with access codes
+- **Admin Dashboard** - Manage users and invite codes
+- **Premium UI** - Gold accent dark theme with smooth animations
+
+## 🛠️ Tech Stack
+
+- **Frontend**: Next.js 14, React 18, TypeScript
+- **Styling**: Tailwind CSS
+- **Database**: Supabase (PostgreSQL)
+- **Storage**: Supabase Storage
+- **Auth**: JWT with HTTP-only cookies
+- **Icons**: Lucide React
+
+## 📦 Prerequisites
+
+- Node.js 18+
+- Supabase account
+- Vercel account (for deployment)
+
+## 🔧 Local Development
+
+1. **Clone the repository**
+   ```bash
+   git clone <repo-url>
+   cd photo-vault
+   ```
+
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
+
+3. **Set up environment variables**
+   ```bash
+   cp .env.example .env.local
+   ```
+   Fill in your Supabase credentials.
+
+4. **Run database migrations**
+   - Go to Supabase SQL Editor
+   - Run `supabase/migrations/001_initial.sql`
+   - Run `supabase/migrations/002_albums.sql`
+
+5. **Create storage bucket**
+   - Go to Supabase Storage
+   - Create a bucket named `photos` (private)
+
+6. **Start development server**
+   ```bash
+   npm run dev
+   ```
+
+7. **Initialize admin account**
+   - Visit `http://localhost:3000/api/admin/init`
+   - This creates the first admin account
+
+## 🚀 Deploy to Vercel
+
+### Option 1: Vercel CLI
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm i -g vercel
+vercel
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Option 2: GitHub Integration
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. Push your code to GitHub
+2. Import the repository in Vercel
+3. Add environment variables in Vercel dashboard
+4. Deploy!
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Required Environment Variables for Vercel
 
-## Learn More
+| Variable | Description |
+|----------|-------------|
+| `NEXT_PUBLIC_SUPABASE_URL` | Your Supabase project URL |
+| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Supabase anon/public key |
+| `SUPABASE_SERVICE_ROLE_KEY` | Supabase service role key |
+| `JWT_SECRET` | Strong random string (32+ chars) |
+| `JWT_EXPIRES_IN` | Token expiry (e.g., `7d`) |
 
-To learn more about Next.js, take a look at the following resources:
+## 📁 Project Structure
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
+photo-vault/
+├── src/
+│   ├── app/              # Next.js App Router
+│   │   ├── api/          # API routes
+│   │   ├── admin/        # Admin dashboard
+│   │   ├── albums/       # Albums pages
+│   │   ├── gallery/      # Photo gallery
+│   │   └── ...
+│   ├── components/       # React components
+│   │   ├── layout/       # Layout components
+│   │   └── ui/           # UI components
+│   └── lib/              # Utilities & helpers
+├── supabase/
+│   └── migrations/       # SQL migrations
+└── public/               # Static assets
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🔐 Security
 
-## Deploy on Vercel
+- Passwords hashed with bcrypt
+- JWT tokens in HTTP-only cookies
+- Service role key never exposed to client
+- Row Level Security in Supabase
+- Invite-only registration
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 📝 License
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+MIT

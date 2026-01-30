@@ -1,36 +1,93 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
-# dependencies
+# ===========================================
+# DEPENDENCIES
+# ===========================================
 /node_modules
 /.pnp
 .pnp.js
 .yarn/install-state.gz
+package-lock.json
 
-# testing
-/coverage
-
-# next.js
+# ===========================================
+# NEXT.JS BUILD OUTPUT
+# ===========================================
 /.next/
 /out/
-
-# production
 /build
+/.swc/
 
-# misc
+# ===========================================
+# TESTING
+# ===========================================
+/coverage
+
+# ===========================================
+# ENVIRONMENT FILES (CRITICAL - NEVER COMMIT!)
+# ===========================================
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.env*.local
+*.env
+
+# ===========================================
+# IDE / EDITOR
+# ===========================================
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.project
+.classpath
+.settings/
+
+# ===========================================
+# OS FILES
+# ===========================================
 .DS_Store
-*.pem
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
 
-# debug
+# ===========================================
+# DEBUG LOGS
+# ===========================================
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
 
-# local env files
-.env*.local
-
-# vercel
-.vercel
-
-# typescript
+# ===========================================
+# TYPESCRIPT
+# ===========================================
 *.tsbuildinfo
 next-env.d.ts
+
+# ===========================================
+# VERCEL
+# ===========================================
+.vercel
+
+# ===========================================
+# MISC
+# ===========================================
+*.pem
+*.key
+*.cert
+*.log
+.cache/
+
+# ===========================================
+# SUPABASE LOCAL (if using Supabase CLI)
+# ===========================================
+.supabase/
+supabase/.temp/
