@@ -295,15 +295,30 @@ function AlbumCard({
         <>
             {/* Cover */}
             <div className="aspect-video bg-surface-elevated relative overflow-hidden">
-                {album.cover_url ? (
-                    <img
-                        src={album.cover_url}
-                        alt={album.name}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    />
+                {isPublic ? (
+                    // Public album - show image
+                    <>
+                        {album.cover_url ? (
+                            <img
+                                src={album.cover_url}
+                                alt={album.name}
+                                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                            />
+                        ) : (
+                            <div className="w-full h-full flex items-center justify-center">
+                                <ImageIcon className="w-16 h-16 text-text-muted" strokeWidth={1} />
+                            </div>
+                        )}
+                    </>
                 ) : (
-                    <div className="w-full h-full flex items-center justify-center">
-                        <ImageIcon className="w-16 h-16 text-text-muted" strokeWidth={1} />
+                    // Private album - no image preview
+                    <div className="w-full h-full bg-gradient-to-br from-purple-900/30 to-black flex flex-col items-center justify-center gap-2">
+                        <div className="w-14 h-14 rounded-full bg-purple-500/10 flex items-center justify-center">
+                            <Lock className="w-7 h-7 text-purple-400" strokeWidth={1.5} />
+                        </div>
+                        <span className="text-xs text-purple-400/70 font-medium">
+                            Requires Access Code
+                        </span>
                     </div>
                 )}
 

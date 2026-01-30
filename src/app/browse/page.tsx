@@ -234,21 +234,15 @@ export default function BrowseAlbumsPage() {
                                         onClick={() => handleAlbumClick(album)}
                                         className="w-full text-left"
                                     >
-                                        <div className="relative aspect-[4/3] bg-black/50">
-                                            {album.cover_url ? (
-                                                <img
-                                                    src={album.cover_url}
-                                                    alt={album.name}
-                                                    className="w-full h-full object-cover blur-sm group-hover:scale-105 transition-transform duration-300"
-                                                />
-                                            ) : (
-                                                <div className="w-full h-full flex items-center justify-center">
-                                                    <ImageIcon className="w-12 h-12 text-text-muted" strokeWidth={1.5} />
+                                        <div className="relative aspect-[4/3] bg-gradient-to-br from-purple-900/30 to-black">
+                                            {/* Private album - no image preview, just lock */}
+                                            <div className="absolute inset-0 flex flex-col items-center justify-center gap-2">
+                                                <div className="w-14 h-14 rounded-full bg-purple-500/10 flex items-center justify-center">
+                                                    <Lock className="w-7 h-7 text-purple-400" strokeWidth={1.5} />
                                                 </div>
-                                            )}
-                                            {/* Lock overlay */}
-                                            <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
-                                                <Lock className="w-8 h-8 text-white/70" strokeWidth={1.5} />
+                                                <span className="text-xs text-purple-400/70 font-medium">
+                                                    Requires Access Code
+                                                </span>
                                             </div>
                                             {/* Visibility Badge */}
                                             <div className="absolute top-3 right-3 flex items-center gap-1.5 px-2 py-1 rounded-full bg-purple-500/20 text-purple-400 text-xs font-medium">
