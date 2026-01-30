@@ -6,7 +6,7 @@
  */
 
 import Link from 'next/link';
-import { Shield, Zap, Key, ArrowRight, Globe } from 'lucide-react';
+import { Shield, Zap, Key, ArrowRight } from 'lucide-react';
 
 export default function LandingPage() {
   return (
@@ -27,19 +27,10 @@ export default function LandingPage() {
               <span className="text-lg font-semibold text-text-primary">PhotoVault</span>
             </div>
 
-            {/* Nav Links */}
-            <div className="flex items-center gap-4">
-              <Link
-                href="/public/albums"
-                className="flex items-center gap-2 px-3 py-2 text-sm font-medium text-text-tertiary hover:text-text-primary transition-colors"
-              >
-                <Globe className="w-4 h-4" strokeWidth={2} />
-                Browse Albums
-              </Link>
-              <Link href="/login" className="btn-primary">
-                Login
-              </Link>
-            </div>
+            {/* Login Button */}
+            <Link href="/login" className="btn-primary">
+              Login
+            </Link>
           </nav>
         </header>
 

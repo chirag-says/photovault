@@ -51,7 +51,7 @@ export function Header({ user }: HeaderProps) {
     const navItems = [
         { href: '/gallery', label: 'Gallery', icon: Image },
         { href: '/albums', label: 'My Albums', icon: FolderOpen },
-        { href: '/public/albums', label: 'Browse', icon: Globe },
+        { href: '/browse', label: 'Browse', icon: Globe },
         { href: '/upload', label: 'Upload', icon: Upload },
     ];
 

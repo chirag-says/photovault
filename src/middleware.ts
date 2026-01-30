@@ -45,7 +45,6 @@ export async function middleware(request: NextRequest) {
             pathname === '/api/health' ||
             pathname === '/api/admin/init' ||
             pathname === '/api/albums/public' ||
-            pathname === '/api/albums/browse' ||
             pathname === '/api/albums/access'
         ) {
             return NextResponse.next();
